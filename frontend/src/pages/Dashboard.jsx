@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import api from "../services/api";
 import axios from "axios";
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
 export default function Dashboard() {
 const navigate = useNavigate();
 
@@ -184,6 +182,20 @@ const updateProject = async () => {
       <h1 className="text-5xl font-bold mb-10">
         Portfolio CMS
       </h1>
+      <button
+    onClick={() => {
+      localStorage.removeItem("token");
+      navigate("/admin");
+    }}
+    className="
+    px-4 py-2
+    bg-red-500
+    rounded-xl
+    font-semibold
+    "
+  >
+    Logout
+  </button>
 
       {/* About */}
       <div className="bg-white/5 border border-white/10 rounded-3xl p-6 mb-8">
@@ -604,15 +616,7 @@ const updateProject = async () => {
   </button>
 
 </div>
-<button
-  onClick={() => {
-    localStorage.removeItem("token");
-    navigate("/admin");
-  }}
-  className="px-4 py-2 bg-red-500 rounded-xl"
->
-  Logout
-</button>
+
 </div>
     </div>
   );
