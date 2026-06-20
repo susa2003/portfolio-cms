@@ -17,7 +17,14 @@ useEffect(() => {
     <section className="min-h-screen flex items-center pt-20">
       <div className="max-w-7xl mx-auto px-6 w-full">
 
-<div className="grid lg:grid-cols-[3.30fr_2.50fr] gap-28 items-center">
+<div className="
+grid
+grid-cols-1
+lg:grid-cols-[3.30fr_2.50fr]
+gap-12
+lg:gap-28
+items-center
+">
           <motion.div
             initial={{ opacity: 0, x: -60 }}
             animate={{ opacity: 1, x: 0 }}
@@ -27,14 +34,28 @@ useEffect(() => {
               {portfolio?.hero?.role}
             </p>
 
-<h1 className="text-8xl md:text-8xl lg:text-8xl font-bold leading-none whitespace-nowrap ">
+<h1 className="
+text-5xl
+sm:text-6xl
+md:text-7xl
+lg:text-8xl
+font-bold
+leading-none
+break-words
+">
   {portfolio?.hero?.name}
 </h1>
             <p className="text-gray-400 text-xl mt-6 max-w-xl">
                {portfolio?.hero?.description}
             </p>
 
-            <div className="mt-10 flex gap-4 flex-wrap">
+            <div className="
+mt-10
+flex
+flex-col
+sm:flex-row
+gap-4
+">
              <a
   href="#projects"
   className="px-8 py-4 rounded-2xl bg-cyan-500 text-black font-semibold inline-block hover:scale-105 transition"
@@ -68,6 +89,7 @@ useEffect(() => {
 
 {/* Java */}
 <div className="
+hidden lg:block
 absolute -top-14 left-1/2 -translate-x-1/2
 opacity-0 scale-75
 group-hover:opacity-100
@@ -81,6 +103,7 @@ transition-all duration-500
 
 {/* React */}
 <div className="
+hidden lg:block
 absolute top-20 -left-25
 opacity-0 scale-75
 group-hover:opacity-100
@@ -93,6 +116,7 @@ transition-all duration-500
 </div>
 {/* Node */}
 <div className="
+hidden lg:block
 absolute bottom-24 -left-24
 opacity-0 scale-75
 group-hover:opacity-100
@@ -107,6 +131,7 @@ transition-all duration-500
 
 {/* MongoDB */}
 <div className="
+hidden lg:block
 absolute top-20 -right-30
 opacity-0 scale-75
 group-hover:opacity-100
@@ -120,6 +145,7 @@ transition-all duration-500
 
 {/* PostgreSQL */}
 <div className="
+hidden lg:block
 absolute bottom-24 -right-33
 opacity-0 scale-75
 group-hover:opacity-100
@@ -133,6 +159,7 @@ transition-all duration-500
 
 {/* Django */}
 <div className="
+hidden lg:block
 absolute -bottom-14 left-1/2 -translate-x-1/2
 opacity-0 scale-75
 group-hover:opacity-100
@@ -152,8 +179,12 @@ transition-all duration-500
       : "/profile.png"
   }
   alt="Sudharsan"
-  className="
-w-[720px]
+className="
+w-full
+max-w-[320px]
+sm:max-w-[380px]
+md:max-w-[500px]
+lg:max-w-[720px]
 rounded-[40px]
 overflow-hidden
 border
