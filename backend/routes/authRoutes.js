@@ -3,7 +3,10 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 const User = require("../models/User");
-
+router.get("/users", async (req, res) => {
+  const users = await User.find({});
+  res.json(users);
+});
 const router = express.Router();
 
 router.get("/", (req, res) => {
