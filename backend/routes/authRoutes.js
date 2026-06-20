@@ -5,14 +5,20 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 
 const router = express.Router();
+
 router.get("/", (req, res) => {
   res.send("Auth Route Working");
 });
+
 router.post("/login", async (req, res) => {
+  console.log("BODY =>", req.body);
+
   try {
     const { email, password } = req.body;
 
     const user = await User.findOne({ email });
+
+    console.log("USER =>", user);
 
     if (!user) {
       return res.status(400).json({
