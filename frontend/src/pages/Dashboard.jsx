@@ -1,8 +1,21 @@
 import { useEffect, useState } from "react";
 import api from "../services/api";
 import axios from "axios";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Dashboard() {
+const navigate = useNavigate();
+
+useEffect(() => {
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    navigate("/admin");
+  }
+}, []);
+
+
 const [projects, setProjects] = useState([]);
 const [editingId, setEditingId] = useState(null);
 const [newProject, setNewProject] = useState({
@@ -591,7 +604,15 @@ const updateProject = async () => {
   </button>
 
 </div>
-
+<button
+  onClick={() => {
+    localStorage.removeItem("token");
+    navigate("/admin");
+  }}
+  className="px-4 py-2 bg-red-500 rounded-xl"
+>
+  Logout
+</button>
 </div>
     </div>
   );
