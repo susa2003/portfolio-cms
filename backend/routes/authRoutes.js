@@ -8,6 +8,21 @@ router.get("/users", async (req, res) => {
   const users = await User.find({});
   res.json(users);
 });
+router.get("/seed-admin", async (req, res) => {
+  const bcrypt = require("bcryptjs");
+
+  const hashedPassword =
+    await bcrypt.hash("susa001@", 10);
+
+  const user = await User.create({
+    name: "Sudharsan K",
+    email: "admin@susa.dev",
+    password: hashedPassword,
+  });
+
+  res.json(user);
+});
+
 
 
 router.get("/", (req, res) => {
