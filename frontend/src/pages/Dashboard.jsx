@@ -11,7 +11,7 @@ useEffect(() => {
   if (!token) {
     navigate("/admin");
   }
-}, []);
+}, [navigate]);
 
 
 const [projects, setProjects] = useState([]);
