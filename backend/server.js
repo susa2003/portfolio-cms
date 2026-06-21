@@ -1,3 +1,4 @@
+require("dotenv").config();
 const authRoutes = require("./routes/authRoutes");
 const projectRoutes = require("./routes/projectRoutes");
 const portfolioRoutes = require("./routes/portfolioRoutes");

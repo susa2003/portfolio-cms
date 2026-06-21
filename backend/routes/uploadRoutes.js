@@ -1,40 +1,46 @@
 const express = require("express");
 const multer = require("multer");
+const cloudinary = require("../config/cloudinary");
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
 
 const Portfolio = require("../models/Portfolio");
 
 const router = express.Router();
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "uploads/");
+/* Hero Image Storage */
+const imageStorage = new CloudinaryStorage({
+  cloudinary,
+  params: {
+    folder: "portfolio-cms/images",
+    resource_type: "image",
   },
-
- filename: (req, file, cb) => {
-  const ext =
-    file.originalname.split(".").pop();
-
-  cb(
-    null,
-    Date.now() + "." + ext
-  );
-},
 });
 
-const upload = multer({
-  storage,
+/* Resume PDF Storage */
+const resumeStorage = new CloudinaryStorage({
+  cloudinary,
+  params: {
+    folder: "portfolio-cms/resumes",
+    resource_type: "raw",
+  },
 });
 
+const imageUpload = multer({
+  storage: imageStorage,
+});
+
+const resumeUpload = multer({
+  storage: resumeStorage,
+});
+
+/* Resume Upload */
 router.post(
   "/resume",
-  upload.single("resume"),
+  resumeUpload.single("resume"),
   async (req, res) => {
+    const filePath = req.file.path;
 
-    const filePath =
-      `/uploads/${req.file.filename}`;
-
-    const portfolio =
-      await Portfolio.findOne();
+    const portfolio = await Portfolio.findOne();
 
     if (portfolio) {
       portfolio.resume = filePath;
@@ -43,24 +49,22 @@ router.post(
       return res.json(portfolio);
     }
 
-    const newPortfolio =
-      await Portfolio.create({
-        resume: filePath,
-      });
+    const newPortfolio = await Portfolio.create({
+      resume: filePath,
+    });
 
     res.json(newPortfolio);
   }
 );
+
+/* Hero Image Upload */
 router.post(
   "/hero-image",
-  upload.single("image"),
+  imageUpload.single("image"),
   async (req, res) => {
+    const filePath = req.file.path;
 
-    const filePath =
-      `/uploads/${req.file.filename}`;
-
-    const portfolio =
-      await Portfolio.findOne();
+    const portfolio = await Portfolio.findOne();
 
     portfolio.hero.image = filePath;
 

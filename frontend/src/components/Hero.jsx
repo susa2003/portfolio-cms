@@ -63,16 +63,12 @@ gap-4
   View Projects
 </a>
 <a
-  href={
-  portfolio?.resume
-    ? `${import.meta.env.VITE_BACKEND_URL}${portfolio.resume}`
-    : "#"
-}
+href={portfolio?.resume || "#"}
   target="_blank"
   rel="noreferrer"
   className="px-8 py-4 rounded-2xl border border-white/20 inline-block hover:bg-white/10 transition"
 >
-  View Resume
+  Download Resume
 </a>
             </div>
           </motion.div>
@@ -83,7 +79,7 @@ gap-4
             transition={{ duration: 1 }}
             className="flex justify-center"
           >
-           <div className="relative flex justify-center items-center group "> 
+           <div className="relative flex justify-center items-center group overflow-visible"> 
 
             <div className="absolute w-[420px] h-[420px] bg-cyan-500/8 blur-[120px] rounded-full" />
 
@@ -173,28 +169,27 @@ transition-all duration-500
 
 <div className="absolute w-[300px] h-[300px] bg-purple-500/8 blur-[100px] rounded-full right-10 bottom-10" /> 
 <img
-   src={
-    portfolio?.hero?.image
-      ? `${import.meta.env.VITE_BACKEND_URL}${portfolio.hero.image}`
-      : "/profile.png"
-  }
-  alt="Sudharsan"
-className="
-w-full
-max-w-[320px]
-sm:max-w-[380px]
-md:max-w-[500px]
-lg:max-w-[720px]
-rounded-[40px]
-overflow-hidden
-border
-border-white/10
-hover:scale-[1.02]
-transition-all
-duration-500
-"
+  src={portfolio?.hero?.image}
+  alt={portfolio?.hero?.name || "Profile"}
+  className="
+    w-full
+    max-w-[280px]
+    sm:max-w-[350px]
+    md:max-w-[450px]
+    lg:max-w-[550px]
+    xl:max-w-[650px]
+    h-auto
+    rounded-[32px]
+    object-cover
+    border
+    border-white/10
+    shadow-2xl
+    transition-all
+    duration-500
+    hover:scale-105
+    hover:shadow-[0_0_60px_rgba(34,211,238,0.35)]
+  "
 />
-
             </div>
           </motion.div>
 
