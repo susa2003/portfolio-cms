@@ -68,7 +68,7 @@ href={portfolio?.resume || "#"}
   rel="noreferrer"
   className="px-8 py-4 rounded-2xl border border-white/20 inline-block hover:bg-white/10 transition"
 >
-  Download Resume
+  View Resume
 </a>
             </div>
           </motion.div>
