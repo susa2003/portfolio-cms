@@ -46,6 +46,7 @@ const [resumeFile, setResumeFile] = useState(null);
       location: "",
       github: "",
       linkedin: "",
+       gitlab: "",
     },
   });
 
@@ -437,6 +438,20 @@ const updateProject = async () => {
       contact: {
         ...portfolio.contact,
         linkedin: e.target.value,
+      },
+    })
+  }
+/>
+      <input
+  className="w-full mb-3 p-3 rounded-xl bg-black/20"
+  value={portfolio.contact.gitlab || ""}
+  placeholder="GitLab URL"
+  onChange={(e) =>
+    setPortfolio({
+      ...portfolio,
+      contact: {
+        ...portfolio.contact,
+        gitlab: e.target.value,
       },
     })
   }
