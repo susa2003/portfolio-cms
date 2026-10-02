@@ -158,7 +158,7 @@ useEffect(() => {
         </a>
 
         <a
-          href="#"
+          href="https://gitlab.com/susa0508"
           target="_blank"
           rel="noreferrer"
           className="
