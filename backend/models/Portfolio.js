@@ -80,6 +80,10 @@ const portfolioSchema = new mongoose.Schema(
         type: String,
         default: "",
       },
+      gitlab: {
+        type: String,
+        default: "",
+      },
     },
   },
   { timestamps: true }
